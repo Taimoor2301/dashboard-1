@@ -7,13 +7,13 @@ import MarkerShadow from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 
 export default function Map({ sites }) {
-  const [center, setCenter] = useState(sites[0]?.loc || [33.738045, 73.084488]);
+  const [center, setCenter] = useState([sites[0].lat, sites[0].lon]);
   const [locationList, setLocationList] = useState(
-    sites.map((site) => site.loc)
+    sites.map((site) => [site.lat, site.lon])
   );
 
   useEffect(() => {
-    setLocationList(sites.map((site) => site.loc));
+    setLocationList(sites.map((site) => [site.lat, site.lon]));
   }, [sites]);
 
   return (
